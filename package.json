@@ -11,7 +11,8 @@
     "dev": "nx serve lixphotography-website",
     "build": "nx run-many -t build",
     "typecheck": "nx run-many -t typecheck",
-    "prepare": "pnpm --filter lixphotography-website exec nuxt prepare"
+    "prepare": "pnpm -r exec nuxt prepare",
+    "dev:portfolio": "nx serve cetric-portfolio"
   },
   "devDependencies": {
     "nx": "24.0.3",

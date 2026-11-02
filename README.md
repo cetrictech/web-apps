@@ -29,6 +29,7 @@ The production server entry point is `apps/lixphotography-website/.output/server
 ## Layout
 
 - `apps/lixphotography-website`: migrated photography website, including its components, theme, and public images.
+- `apps/cetric-portfolio`: Cetric Okola’s personal portfolio and public CV, based on the supplied résumé.
 - `libs/`: reserved for future shared packages; pnpm already includes `libs/*` in the workspace.
 
 Nx discovers Nuxt tasks through `@nx/nuxt/plugin`. App dependencies belong in the app's `package.json`; workspace tools belong in the root manifest. Place additional Nuxt apps under `apps/`, give each a unique package name and a `nuxt.config.ts`, then run `pnpm install`.
@@ -61,3 +62,15 @@ The container uses Nuxt's standalone production output. Development dependencies
 The canonical domain is `https://lixphotography.com`, defined in `app/data/site.ts`. The site serves `/robots.txt`, `/sitemap.xml`, and `/llms.txt` from this same business content. Home page JSON-LD describes the business, its services, and the visible FAQs; each public page has a canonical URL and social preview metadata. The AI-readable summary is supplementary and does not guarantee search or AI answer placement.
 
 The cookie banner stores the visitor's choice in the `lix-cookie-consent` cookie for 180 days. Optional theme persistence is off until accepted. Revoking preferences removes `lix-photography-theme` from local storage. Cookie settings can be reopened from the footer or `/privacy`. There are no analytics or advertising trackers. Google Fonts remains an external stylesheet, disclosed on the privacy page.
+
+## Cetric’s portfolio
+
+```sh
+pnpm dev:portfolio                     # http://localhost:4211
+pnpm nx build cetric-portfolio
+pnpm nx run cetric-portfolio:typecheck
+```
+
+The portfolio includes selected work, experience, technical skills, contact links, and a printable `/cv` page. Public copy is curated from the supplied résumé; referees’ personal details are excluded. Edit `apps/cetric-portfolio/app/data/profile.ts` to update the shared content. The downloadable PDF is generated from the public CV page; regenerate it after changes using the browser print function or a headless browser. No analytics or tracking cookies are included.
+
+Docker Compose publishes the portfolio on port 4211. Drone builds and deploys both apps locally on the VPS. Configure a domain at the reverse proxy when ready; no public domain has been assumed in this app’s metadata.
