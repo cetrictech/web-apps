@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   ui: { fonts: false, colorMode: false },
   css: ['~/assets/css/main.css'],
-  devServer: { host: 'localhost', port: 4211 },
+  devServer: { host: 'localhost', port: 4310 },
   app: { head: {
     htmlAttrs: { lang: 'en', class: 'light' },
     meta: [{ name: 'theme-color', content: '#f7f7f2' }],

@@ -10,7 +10,7 @@ FROM node:22-alpine
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NITRO_HOST=0.0.0.0
-ENV NITRO_PORT=4211
+ENV NITRO_PORT=4310
 COPY --from=build /workspace/apps/cetric-portfolio/.output ./.output
-EXPOSE 4211
+EXPOSE 4310
 CMD ["node", ".output/server/index.mjs"]

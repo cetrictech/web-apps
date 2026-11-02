@@ -12,8 +12,8 @@ services:
     build:
       context: .
       dockerfile: apps/cetric-portfolio/Dockerfile
-    ports: ["4211:4211"]
+    ports: ["4310:4310"]
     env_file: [.env.production]
     environment:
       NITRO_HOST: 0.0.0.0
-      NITRO_PORT: 4211
+      NITRO_PORT: 4310
