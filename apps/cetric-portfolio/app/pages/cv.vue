@@ -10,6 +10,6 @@
 </template>
 <script setup lang="ts">
 import { profile, experience, projects, additionalProjects, skills } from '~/data/profile';
-useSeoMeta({ title: 'Cetric Okola — Curriculum Vitae', description: profile.summary, robots: 'noindex, follow' });
+usePortfolioSeo('Cetric Okola — Curriculum Vitae', profile.summary, '/cv', false);
 function printCv() { window.print(); }
 </script>

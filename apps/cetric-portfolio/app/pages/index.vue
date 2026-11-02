@@ -11,7 +11,7 @@
 
     <main id="main">
       <section class="hero wrap" aria-labelledby="intro-heading">
-        <div class="hero-main"><p class="overline"><span class="location-dot" /> NAIROBI, KENYA · SOFTWARE ENGINEER &amp; TECHNICAL LEADER</p><h1 id="intro-heading">I build systems.<br>And the teams<br><em>behind them.</em></h1><p class="hero-summary">I'm Cetric. I turn complex problems into reliable software.<br class="desktop-only"> From the first architecture decision to the people who bring it to life.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" :href="`mailto:${profile.email}`">Let's talk <span aria-hidden="true">↗</span></a></div></div>
+        <div class="hero-main"><p class="overline"><span class="location-dot" /> NAIROBI, KENYA · FOUNDER &amp; CEO OF STAYPACE</p><h1 id="intro-heading">I build systems.<br>And the teams<br><em>behind them.</em></h1><p class="hero-summary">I'm Cetric, Founder &amp; CEO of Staypace. I turn complex problems into reliable software.<br class="desktop-only"> From the first architecture decision to the people who bring it to life.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" :href="`mailto:${profile.email}`">Let's talk <span aria-hidden="true">↗</span></a></div></div>
         <aside class="hero-note" aria-label="Experience overview"><span class="note-label">A LITTLE CONTEXT</span><p class="years">9<span>+</span></p><p class="years-caption">years of engineering,<br>architecture &amp; leadership.</p><div class="note-divider"/><p class="note-description">Built for real people.<br>Designed for the long run.</p><a href="/cv" class="text-link">The longer version ↗</a><span class="note-index" aria-hidden="true">01 — INTRODUCTION</span></aside>
       </section>
       <div class="focus-strip"><div class="wrap"><span>Backend engineering</span><i aria-hidden="true">✳</i><span>Systems architecture</span><i aria-hidden="true">✳</i><span>Technical leadership</span></div></div>
@@ -35,6 +35,38 @@
 import { profile, projects, additionalProjects, experience, skills } from '~/data/profile';
 const menuOpen = ref(false);
 const navigation = [{ id: 'work', label: 'Selected work' }, { id: 'experience', label: 'Experience' }, { id: 'skills', label: 'Toolkit' }, { id: 'contact', label: 'Contact' }];
-useSeoMeta({ title: 'Cetric Okola — Software Engineer & Technical Leader', description: profile.summary, ogTitle: 'Cetric Okola — Engineering systems. Leading teams.', ogDescription: profile.summary, ogType: 'website', ogLocale: 'en_KE', twitterCard: 'summary' });
-useHead({ script: [{ type: 'application/ld+json', innerHTML: JSON.stringify({ '@context': 'https://schema.org', '@type': 'Person', name: profile.name, jobTitle: profile.title, email: profile.email, telephone: profile.phone, homeLocation: { '@type': 'City', name: 'Nairobi' }, knowsAbout: ['Software engineering', 'System architecture', 'Technical leadership', 'Payment systems', 'AI integration'] }).replace(/</g, '\\u003c') }] });
+usePortfolioSeo(
+  'Cetric Okola | Founder & CEO of Staypace',
+  'Cetric Okola is the Founder and CEO of Staypace, a software engineer and technical leader in Nairobi, Kenya, with 9+ years of experience building reliable systems.',
+);
+useHead({ script: [{
+  key: 'cetric-profile-schema', type: 'application/ld+json',
+  innerHTML: JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person', '@id': `${profile.url}/#person`, name: profile.name,
+        url: `${profile.url}/`, jobTitle: 'Founder & CEO', description: profile.summary,
+        email: profile.email, telephone: profile.phone,
+        worksFor: { '@id': `${profile.url}/#staypace` },
+        homeLocation: { '@type': 'City', name: 'Nairobi', containedInPlace: { '@type': 'Country', name: 'Kenya' } },
+        knowsAbout: ['Software engineering', 'System architecture', 'Technical leadership', 'Payment systems', 'AI integration'],
+      },
+      {
+        '@type': 'Organization', '@id': `${profile.url}/#staypace`, name: 'Staypace',
+        founder: { '@id': `${profile.url}/#person` },
+      },
+      {
+        '@type': 'ProfilePage', '@id': `${profile.url}/#profile`, url: `${profile.url}/`,
+        name: 'Cetric Okola | Founder & CEO of Staypace', inLanguage: 'en-KE',
+        mainEntity: { '@id': `${profile.url}/#person` },
+        isPartOf: { '@id': `${profile.url}/#website` },
+      },
+      {
+        '@type': 'WebSite', '@id': `${profile.url}/#website`, url: `${profile.url}/`,
+        name: 'Cetric Okola', publisher: { '@id': `${profile.url}/#person` }, inLanguage: 'en-KE',
+      },
+    ],
+  }).replace(/</g, '\\u003c'),
+}] });
 </script>

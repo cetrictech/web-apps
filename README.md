@@ -73,4 +73,6 @@ pnpm nx run cetric-portfolio:typecheck
 
 The portfolio includes selected work, experience, technical skills, contact links, and a printable `/cv` page. Public copy is curated from the supplied résumé; referees’ personal details are excluded. Edit `apps/cetric-portfolio/app/data/profile.ts` to update the shared content. The downloadable PDF is generated from the public CV page; regenerate it after changes using the browser print function or a headless browser. No analytics or tracking cookies are included.
 
-Docker Compose publishes the portfolio on port 4310. Drone builds and deploys both apps locally on the VPS. Configure a domain at the reverse proxy when ready; no public domain has been assumed in this app’s metadata.
+Docker Compose publishes the portfolio on port 4310. Drone builds and deploys both apps locally on the VPS. The portfolio’s canonical domain is `https://cetric.tech`; configure it at the reverse proxy.
+
+The portfolio’s current role is Founder & CEO of Staypace. Profile data, social metadata, Person/Organization/ProfilePage structured data, and AI-readable summaries use `app/data/profile.ts` as their source. `/robots.txt` points to `/sitemap.xml`; `/llms.txt` provides a concise profile, and `/llms-full.txt` includes the complete public experience and project text. The printable CV is marked `noindex` and omitted from the sitemap. AI-readable files supplement crawlable page content; they do not guarantee search placement.

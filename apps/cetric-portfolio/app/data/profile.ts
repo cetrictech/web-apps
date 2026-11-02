@@ -1,14 +1,20 @@
 export const profile = {
   name: 'Cetric Okola',
-  title: 'Software Engineer & Technical Leader',
+  title: 'Founder & CEO, Staypace',
+  url: 'https://cetric.tech',
   email: 'okolacetric@gmail.com',
   phone: '+254 704 145832',
   phoneHref: 'tel:+254704145832',
   location: 'Nairobi, Kenya',
-  summary: 'Software engineer and technical leader with 9+ years of experience designing, building, and scaling reliable software systems across web, cloud, data, and AI-enabled platforms.',
+  summary: 'Founder and CEO of Staypace, and a software engineer and technical leader with 9+ years of experience designing, building, and scaling reliable software systems across web, cloud, data, and AI-enabled platforms.',
 };
 
 export const experience = [
+  {
+    company: 'Staypace', role: 'Founder & CEO', dates: 'Present', type: 'Leadership',
+    summary: 'Currently serving as Founder and CEO of Staypace.',
+    highlights: [],
+  },
   {
     company: 'Staypace Limited', role: 'Lead Fintech Architect & MVP Engineer',
     dates: 'Dec 2025 — Jun 2026', type: 'Contract',
