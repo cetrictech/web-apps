@@ -43,7 +43,7 @@ Google Fonts remains an external stylesheet, as in the original app. Nuxt UI aut
 
 The deployment follows Darena's exec-runner pipeline, build containers, registry pushes, and Compose recreation. It deploys pushes to `develop` using Drone runner labels `environment: uat` and `location: darena-vps`.
 
-The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The pipeline creates `.env.production` from `.env` when available, otherwise an empty file.
+The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The committed `.env` contains local defaults; `.env.production` contains the production runtime values loaded by Compose. Both use port 3000. Registry credentials are supplied by Drone secrets.
 
 Configure these Drone secrets, using the same names as Darena:
 
@@ -57,7 +57,6 @@ Images are tagged with the first 12 characters of the Git commit and `develop`. 
 For a local container build and run:
 
 ```sh
-touch .env.production
 docker compose build
 docker compose up -d
 ```
