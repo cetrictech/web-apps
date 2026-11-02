@@ -43,7 +43,7 @@ Google Fonts remains an external stylesheet, as in the original app. Nuxt UI aut
 
 The deployment follows Darena's exec-runner pipeline, build containers, registry pushes, and Compose recreation. It deploys pushes to `develop` using Drone runner labels `environment: uat` and `location: darena-vps`.
 
-The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and make `/var/lib/web-apps` writable by the runner (`STATE_DIR` overrides this directory). The pipeline creates `.env.production` from `.env` when available, otherwise an empty file.
+The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The pipeline creates `.env.production` from `.env` when available, otherwise an empty file.
 
 Configure these Drone secrets, using the same names as Darena:
 
