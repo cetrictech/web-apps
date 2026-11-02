@@ -336,3 +336,9 @@ html:has(dialog[open]) { overflow: hidden; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+.booking-field { display: grid; gap: 10px; }
+.booking-form .booking-field > label { display: block; }
+.booking-date-row { display: flex; align-items: center; gap: 10px; }
+.booking-form .booking-choice { width: 100%; min-width: 0; justify-content: space-between; border-radius: 0; border-bottom: 1px solid var(--border); background: transparent; color: var(--foreground); padding: 10px 0; font-size: 12px; font-weight: 400; box-shadow: none; }
+@media (max-width: 760px) { .booking-form .booking-choice { font-size: 16px; } }
