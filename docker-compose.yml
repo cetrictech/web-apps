@@ -1,6 +1,5 @@
 services:
   lixphotography-website:
-    image: ${DOCKER_IMAGE_NAMESPACE:-web-apps}/lixphotography-website:${DOCKER_IMAGE_TAG:-develop}
     build:
       context: .
       dockerfile: apps/lixphotography-website/Dockerfile

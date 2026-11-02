@@ -9,15 +9,6 @@ node:
   location: darena-vps
 steps:
 - name: deploy
-  environment:
-    DOCKER_IMAGE_NAMESPACE:
-      from_secret: docker_image_namespace
-    DOCKER_REGISTRY:
-      from_secret: docker_registry
-    DOCKER_USERNAME:
-      from_secret: docker_username
-    DOCKER_PASSWORD:
-      from_secret: docker_password
   commands:
   - set -euo pipefail
   - cd /opt/apps/web-apps/web-apps

@@ -41,18 +41,11 @@ Google Fonts remains an external stylesheet, as in the original app. Nuxt UI aut
 
 ## Docker and Drone deployment
 
-The deployment follows Darena's exec-runner pipeline, build containers, registry pushes, and Compose recreation. It deploys pushes to `develop` using Drone runner labels `environment: uat` and `location: darena-vps`.
+The deployment follows Darena's exec-runner pipeline, build containers and Compose recreation. It deploys pushes to `develop` using Drone runner labels `environment: uat` and `location: darena-vps`.
 
-The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The committed `.env` contains local defaults; `.env.production` contains the production runtime values loaded by Compose. Both use port 3000. Registry credentials are supplied by Drone secrets.
+The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The committed `.env` contains local defaults; `.env.production` contains the production runtime values loaded by Compose. Both use port 3000.
 
-Configure these Drone secrets, using the same names as Darena:
-
-- `docker_image_namespace`: full registry namespace, e.g. `registry.example.com/cetrictech`.
-- `docker_registry`: registry hostname for Docker login.
-- `docker_username`: registry login username.
-- `docker_password`: registry password or access token.
-
-Images are tagged with the first 12 characters of the Git commit and `develop`. The app is published on host port 3000 and listens on container port 3000.
+Application images are built and used locally on the VPS. No container registry credentials, login, or image pushes are required. Public Node base images are still downloaded when needed. The app is published on host port 3000 and listens on container port 3000.
 
 For a local container build and run:
 
