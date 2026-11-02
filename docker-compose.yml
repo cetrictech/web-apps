@@ -1,0 +1,11 @@
+services:
+  lixphotography-website:
+    image: ${DOCKER_IMAGE_NAMESPACE:-web-apps}/lixphotography-website:${DOCKER_IMAGE_TAG:-develop}
+    build:
+      context: .
+      dockerfile: apps/lixphotography-website/Dockerfile
+    ports: ["3000:3000"]
+    env_file: [.env.production]
+    environment:
+      NITRO_HOST: 0.0.0.0
+      NITRO_PORT: 3000

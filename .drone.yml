@@ -1,0 +1,35 @@
+kind: pipeline
+type: exec
+name: web-apps-develop-deploy
+platform:
+  os: linux
+  arch: amd64
+node:
+  environment: uat
+  location: darena-vps
+steps:
+- name: deploy
+  environment:
+    DOCKER_IMAGE_NAMESPACE:
+      from_secret: docker_image_namespace
+    DOCKER_REGISTRY:
+      from_secret: docker_registry
+    DOCKER_USERNAME:
+      from_secret: docker_username
+    DOCKER_PASSWORD:
+      from_secret: docker_password
+  commands:
+  - set -euo pipefail
+  - cd /opt/apps/web-apps/web-apps
+  - git fetch origin develop
+  - git reset --hard origin/develop
+  - if test ! -f .env.production; then if test -f .env; then cp .env .env.production; else touch .env.production; fi; fi
+  - bash scripts/vps-bootstrap.sh --check
+  - bash scripts/drone-deploy.sh
+trigger:
+  branch:
+    include:
+    - develop
+  event:
+    include:
+    - push

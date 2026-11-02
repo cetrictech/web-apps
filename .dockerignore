@@ -1,0 +1,11 @@
+.git
+node_modules
+**/node_modules
+**/.nuxt
+**/.output
+.nx
+.env
+.env.*
+!.env.example
+**/.vercel
+**/.cache
