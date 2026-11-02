@@ -11,13 +11,13 @@
 
     <main id="main">
       <section class="hero wrap" aria-labelledby="intro-heading">
-        <div class="hero-main"><p class="overline"><span class="location-dot" /> NAIROBI, KENYA · FOUNDER &amp; CEO OF STAYPACE</p><h1 id="intro-heading">I build systems.<br>And the teams<br><em>behind them.</em></h1><p class="hero-summary">I'm Cetric, Founder &amp; CEO of Staypace. I turn complex problems into reliable software.<br class="desktop-only"> From the first architecture decision to the people who bring it to life.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" :href="`mailto:${profile.email}`">Let's talk <span aria-hidden="true">↗</span></a></div></div>
+        <div class="hero-main"><p class="overline"><span class="location-dot" /> NAIROBI, KENYA · FOUNDER &amp; CEO OF STAYPACE</p><h1 id="intro-heading">I build systems.<br>And the teams<br><em>behind them.</em></h1><p class="hero-summary">I'm Cetric, Founder &amp; CEO of <a :href="profile.companyUrl" target="_blank" rel="noopener noreferrer" class="company-link">Staypace</a>. I turn complex problems into reliable software.<br class="desktop-only"> From the first architecture decision to the people who bring it to life.</p><div class="hero-actions"><a class="button button-dark" href="#work">Explore my work <span aria-hidden="true">↘</span></a><a class="text-link" :href="`mailto:${profile.email}`">Let's talk <span aria-hidden="true">↗</span></a></div></div>
         <aside class="hero-note" aria-label="Experience overview"><span class="note-label">A LITTLE CONTEXT</span><p class="years">9<span>+</span></p><p class="years-caption">years of engineering,<br>architecture &amp; leadership.</p><div class="note-divider"/><p class="note-description">Built for real people.<br>Designed for the long run.</p><a href="/cv" class="text-link">The longer version ↗</a><span class="note-index" aria-hidden="true">01 — INTRODUCTION</span></aside>
       </section>
       <div class="focus-strip"><div class="wrap"><span>Backend engineering</span><i aria-hidden="true">✳</i><span>Systems architecture</span><i aria-hidden="true">✳</i><span>Technical leadership</span></div></div>
 
       <section id="work" class="section wrap" aria-labelledby="work-heading"><div class="section-heading"><div><p class="overline">01 / SELECTED WORK</p><h2 id="work-heading">Good engineering.<br><em>Meaningful outcomes.</em></h2></div><p class="section-note">A few problems I've helped solve,<br>and the thinking behind the work.</p></div>
-        <div class="project-grid"><article v-for="project in projects" :key="project.number" class="project-card" :class="{ 'project-featured': project.number === '01' }"><div class="project-top"><span>{{ project.category }}</span><span>{{ project.number }}</span></div><h3>{{ project.title }}</h3><p class="project-name">{{ project.name }}</p><p class="project-description">{{ project.description }}</p><div class="project-tags"><UBadge v-for="tag in project.tags" :key="tag" color="neutral" variant="outline" class="project-tag">{{ tag }}</UBadge></div><details class="project-details"><summary>What I worked on <span aria-hidden="true">+</span></summary><p>{{ project.detail }}</p></details></article></div>
+        <div class="project-grid"><article v-for="project in projects" :key="project.number" class="project-card" :class="{ 'project-featured': project.number === '01' }"><div class="project-top"><span>{{ project.category }}</span><span>{{ project.number }}</span></div><h3>{{ project.title }}</h3><p class="project-name">{{ project.name }}</p><p class="project-description">{{ project.description }}</p><div class="project-tags"><UBadge v-for="tag in project.tags" :key="tag" color="neutral" variant="outline" class="project-tag">{{ tag }}</UBadge></div><a v-if="project.url" :href="project.url" target="_blank" rel="noopener noreferrer" class="project-url">{{ project.url.replace('https://', '') }} <span aria-hidden="true">↗</span></a><details class="project-details"><summary>What I worked on <span aria-hidden="true">+</span></summary><p>{{ project.detail }}</p></details></article></div>
         <div class="more-work"><span class="overline">ALSO BUILT</span><div v-for="project in additionalProjects" :key="project.name"><h3>{{ project.name }}</h3><p>{{ project.description }}</p></div></div>
       </section>
 
@@ -53,7 +53,7 @@ useHead({ script: [{
         knowsAbout: ['Software engineering', 'System architecture', 'Technical leadership', 'Payment systems', 'AI integration'],
       },
       {
-        '@type': 'Organization', '@id': `${profile.url}/#staypace`, name: 'Staypace',
+        '@type': 'Organization', '@id': `${profile.url}/#staypace`, name: 'Staypace', url: profile.companyUrl,
         founder: { '@id': `${profile.url}/#person` },
       },
       {

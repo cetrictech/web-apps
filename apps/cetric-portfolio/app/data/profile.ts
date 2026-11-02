@@ -2,6 +2,7 @@ export const profile = {
   name: 'Cetric Okola',
   title: 'Founder & CEO, Staypace',
   url: 'https://cetric.tech',
+  companyUrl: 'https://staypace.com',
   email: 'cetric@staypace.com',
   phone: '+254 704 145832',
   phoneHref: 'tel:+254704145832',
@@ -62,9 +63,10 @@ export const experience = [
 ];
 
 export const projects = [
-  { number: '01', category: 'PAYMENTS & PLATFORM ARCHITECTURE', title: 'From concept to\na fintech MVP.', name: 'Staypace · Fintech platform', description: 'Configurable pay-ins, payouts, merchant collections, and transaction orchestration. Architecture and hands-on engineering, from the data model to the payment flow.', tags: ['Payment orchestration', 'Backend systems', 'API design'], detail: 'Designed transaction references, provider routing, payment steps, audit trails, retries, and callbacks across multiple merchants, currencies, and countries.' },
-  { number: '02', category: 'MULTI-TENANT SYSTEMS', title: 'A foundation\nfor Swoop Africa.', name: 'Purple Elephant Ventures · Swoop Africa', description: 'A scalable platform foundation with secure multi-tenant services, a clear technical roadmap, and infrastructure built for sustainable growth.', tags: ['Node.js', 'PostgreSQL', 'Cloud & CI/CD'], detail: 'Led the system blueprint, backend data modelling, API design, containerized infrastructure, and technical delivery in collaboration with product and business teams.' },
-  { number: '03', category: 'APPLIED AI & FINTECH', title: 'Less manual review.\nSmarter onboarding.', name: 'TandaPay · AI-driven KYC', description: 'AI-powered document parsing and onboarding workflows using OCR and NLP to reduce manual review and improve compliance accuracy.', tags: ['OCR & NLP', 'AI integration', 'KYC automation'], detail: 'Led the development of KYC automation tools and real-time transaction anomaly detection as part of the platform’s technology strategy.' },
+  { number: '01', category: 'PAYMENTS & PLATFORM ARCHITECTURE', title: 'From concept to\na fintech MVP.', name: 'Staypace · Fintech platform', url: 'https://staypace.com', description: 'Configurable pay-ins, payouts, merchant collections, and transaction orchestration. Architecture and hands-on engineering, from the data model to the payment flow.', tags: ['Payment orchestration', 'Backend systems', 'API design'], detail: 'Designed transaction references, provider routing, payment steps, audit trails, retries, and callbacks across multiple merchants, currencies, and countries.' },
+  { number: '02', category: 'SPORTS & DIGITAL EXPERIENCES', title: 'A digital arena.\nBuilt for the fans.', name: 'PlayDarena · Sports challenge platform', url: 'https://playdarena.com', description: 'A sports challenge platform bringing together a public website, participant experience, and administration tools. Work spanning web applications and shared platform foundations.', tags: ['Nuxt.js', 'Nx monorepo', 'Platform integration'], detail: 'Worked on PlayDarena’s web platform, including participant and administration experiences, shared API integration, and identity flows across an Nx monorepo.' },
+  { number: '03', category: 'MULTI-TENANT SYSTEMS', title: 'A foundation\nfor Swoop Africa.', name: 'Purple Elephant Ventures · Swoop Africa', url: null, description: 'A scalable platform foundation with secure multi-tenant services, a clear technical roadmap, and infrastructure built for sustainable growth.', tags: ['Node.js', 'PostgreSQL', 'Cloud & CI/CD'], detail: 'Led the system blueprint, backend data modelling, API design, containerized infrastructure, and technical delivery in collaboration with product and business teams.' },
+  { number: '04', category: 'APPLIED AI & FINTECH', title: 'Less manual review.\nSmarter onboarding.', name: 'TandaPay · AI-driven KYC', url: null, description: 'AI-powered document parsing and onboarding workflows using OCR and NLP to reduce manual review and improve compliance accuracy.', tags: ['OCR & NLP', 'AI integration', 'KYC automation'], detail: 'Led the development of KYC automation tools and real-time transaction anomaly detection as part of the platform’s technology strategy.' },
 ];
 
 export const additionalProjects = [
