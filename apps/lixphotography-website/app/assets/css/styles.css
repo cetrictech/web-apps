@@ -146,7 +146,7 @@ a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visibl
 .eyebrow { color: var(--primary); }
 .quiet-label { color: var(--muted-foreground); }
 .gold-dot { display: inline-block; width: 6px; height: 6px; margin-right: 9px; border-radius: 50%; background: var(--primary); }
-h1, h2, .wordmark, .footer-top > p { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; }
+h1, h2, .footer-top > p { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; }
 h1, h2 { letter-spacing: -.045em; }
 h2 { font-size: clamp(44px, 5vw, 72px); line-height: 1.02; }
 h1 em, h2 em { color: var(--primary); font-weight: 500; }
@@ -160,9 +160,8 @@ h1 em, h2 em { color: var(--primary); font-weight: 500; }
 .skip-link:focus { top: 10px; }
 .site-header { position: sticky; top: 0; z-index: 60; background: var(--background); border-bottom: 1px solid var(--border); }
 .nav-inner { height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
-.wordmark { display: inline-block; font-size: 52px; letter-spacing: -.07em; line-height: .8; }
-.wordmark > span { color: var(--primary); }
-.wordmark small { display: block; font: 7px 'Manrope', sans-serif; letter-spacing: .22em; margin-top: 10px; }
+.brand-logo-link { display: inline-flex; flex-shrink: 0; align-items: center; }
+.brand-logo { display: block; width: 72px; height: 72px; object-fit: contain; }
 .desktop-nav { display: flex; gap: 34px; font-size: 11px; }
 .desktop-nav a:hover { color: var(--primary); }
 .nav-actions { display: flex; align-items: center; gap: 22px; }
@@ -277,7 +276,7 @@ html:has(dialog[open]) { overflow: hidden; }
   .editorial-wrap { width: calc(100% - 40px); }
   .editorial-section { padding-block: 70px; }
   .nav-inner { height: 80px; gap: 15px; }
-  .wordmark { font-size: 43px; }
+  .brand-logo { width: 60px; height: 60px; }
   .desktop-nav, .desktop-book { display: none; }
   .menu-toggle { display: block; font-size: 11px; }
   .nav-actions { gap: 12px; }

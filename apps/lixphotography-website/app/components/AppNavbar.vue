@@ -1,7 +1,7 @@
 <template>
   <header class="site-header">
     <div class="editorial-wrap nav-inner">
-      <NuxtLink to="/" aria-label="Lix Photography home" class="wordmark">lix<span>.</span><small>PHOTOGRAPHY</small></NuxtLink>
+      <NuxtLink to="/" aria-label="Lix Photography home" class="brand-logo-link"><AppLogo /></NuxtLink>
       <nav aria-label="Main navigation" class="desktop-nav">
         <NuxtLink v-for="link in links" :key="link.id" :to="`/#${link.id}`">{{ link.label }}</NuxtLink>
       </nav>
