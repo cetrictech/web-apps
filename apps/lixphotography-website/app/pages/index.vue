@@ -3,6 +3,7 @@
     <HeroSection />
     <PortfolioGrid />
     <AboutSection />
+    <TeamSection />
     <ServicesSection />
     <FaqSection />
     <ContactSection />

@@ -18,7 +18,7 @@
   </header>
 </template>
 <script setup lang="ts">
-const links = [{ id: 'portfolio', label: 'The work' }, { id: 'about', label: 'The studio' }, { id: 'services', label: 'What we do' }];
+const links = [{ id: 'portfolio', label: 'The work' }, { id: 'about', label: 'The studio' }, { id: 'team', label: 'Our people' }, { id: 'services', label: 'What we do' }];
 const menuOpen = ref(false);
 const route = useRoute();
 watch(() => route.fullPath, () => { menuOpen.value = false; });
