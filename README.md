@@ -55,3 +55,9 @@ docker compose up -d
 ```
 
 The container uses Nuxt's standalone production output. Development dependencies are installed only in the build stage. The Drone build container uses pnpm 10.30.3 to match this workspace.
+
+## Search, AI discovery, and cookies
+
+The canonical domain is `https://lixphotography.com`, defined in `app/data/site.ts`. The site serves `/robots.txt`, `/sitemap.xml`, and `/llms.txt` from this same business content. Home page JSON-LD describes the business, its services, and the visible FAQs; each public page has a canonical URL and social preview metadata. The AI-readable summary is supplementary and does not guarantee search or AI answer placement.
+
+The cookie banner stores the visitor's choice in the `lix-cookie-consent` cookie for 180 days. Optional theme persistence is off until accepted. Revoking preferences removes `lix-photography-theme` from local storage. Cookie settings can be reopened from the footer or `/privacy`. There are no analytics or advertising trackers. Google Fonts remains an external stylesheet, disclosed on the privacy page.

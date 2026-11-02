@@ -3,7 +3,14 @@ import { defineNuxtConfig } from 'nuxt/config';
 const themeStorageKey = 'lix-photography-theme';
 const themeInitScript = `(() => {
   const root = document.documentElement;
-  const storedTheme = window.localStorage.getItem('${themeStorageKey}');
+  let storedTheme = null;
+  try {
+    const value = document.cookie.split('; ').find(item => item.startsWith('lix-cookie-consent='))?.split('=').slice(1).join('=');
+    const consent = value ? JSON.parse(decodeURIComponent(value)) : null;
+    if (consent?.version === 1 && consent.preferences === true) {
+      storedTheme = window.localStorage.getItem('${themeStorageKey}');
+    }
+  } catch {}
   const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
 
@@ -17,7 +24,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/ui'],
   css: ['~/assets/css/styles.css'],
   devServer: { host: 'localhost', port: 4210 },
-  ui: { fonts: false },
+  ui: { fonts: false, colorMode: false },
   compatibilityDate: '2026-03-23',
   app: {
     head: {

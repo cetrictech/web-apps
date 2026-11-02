@@ -57,7 +57,7 @@
                 <li v-for="link in footerQuickLinks" :key="link.label">
                   <a
                     class="text-sm text-muted-foreground transition duration-200 hover:text-foreground"
-                    :href="link.href"
+                    :href="link.href.startsWith('#') ? `/${link.href}` : link.href"
                   >
                     {{ link.label }}
                   </a>
@@ -87,6 +87,10 @@
           class="mt-8 flex flex-col gap-3 border-t border-border pt-6 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between"
         >
           <p>© {{ currentYear }} {{ siteInfo.name }}. All rights reserved.</p>
+          <div class="flex flex-wrap gap-4">
+            <NuxtLink to="/privacy" class="underline underline-offset-4">Privacy &amp; cookies</NuxtLink>
+            <button type="button" class="underline underline-offset-4" @click="openCookieSettings">Cookie settings</button>
+          </div>
           <a
             :href="siteInfo.mapHref"
             target="_blank"
@@ -104,5 +108,6 @@
 <script setup lang="ts">
 import { footerQuickLinks, siteInfo, socialPlaceholders } from '~/data/site';
 
+const { openCookieSettings } = useCookieConsent();
 const currentYear = new Date().getFullYear();
 </script>

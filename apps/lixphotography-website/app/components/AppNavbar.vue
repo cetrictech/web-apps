@@ -143,6 +143,10 @@ const scrollToSection = (id: string) => {
 const handleNavClick = (id: string) => {
   activeSection.value = id;
   isMobileMenuOpen.value = false;
+  if (route.path !== '/') {
+    void navigateTo(`/#${id}`);
+    return;
+  }
   scrollToSection(id);
 };
 

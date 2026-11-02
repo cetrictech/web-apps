@@ -5,6 +5,11 @@ export type ThemeMode = 'light' | 'dark';
 const storageKey = 'lix-photography-theme';
 
 export function useTheme() {
+  const { allowPreferences } = useCookieConsent();
+  const readStoredTheme = () => {
+    if (!import.meta.client || !allowPreferences.value) return null;
+    try { return window.localStorage.getItem(storageKey); } catch { return null; }
+  };
   const theme = useState<ThemeMode>('lix-theme-mode', () => 'dark');
   const initialized = useState<boolean>('lix-theme-initialized', () => false);
   const listenerBound = useState<boolean>('lix-theme-listener-bound', () => false);
@@ -21,8 +26,8 @@ export function useTheme() {
     root.classList.add(mode);
     root.style.colorScheme = mode;
 
-    if (persist) {
-      window.localStorage.setItem(storageKey, mode);
+    if (persist && allowPreferences.value) {
+      try { window.localStorage.setItem(storageKey, mode); } catch { /* Storage may be blocked. */ }
     }
   };
 
@@ -31,7 +36,7 @@ export function useTheme() {
       return theme.value;
     }
 
-    const storedTheme = window.localStorage.getItem(storageKey);
+    const storedTheme = readStoredTheme();
 
     if (storedTheme === 'light' || storedTheme === 'dark') {
       return storedTheme;
@@ -46,7 +51,7 @@ export function useTheme() {
     }
 
     const preferredTheme = getPreferredTheme();
-    const hasStoredPreference = window.localStorage.getItem(storageKey) !== null;
+    const hasStoredPreference = readStoredTheme() !== null;
 
     applyTheme(preferredTheme, hasStoredPreference);
     initialized.value = true;
@@ -57,7 +62,7 @@ export function useTheme() {
 
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const syncWithSystem = (event: MediaQueryListEvent) => {
-      if (window.localStorage.getItem(storageKey) !== null) {
+      if (readStoredTheme() !== null) {
         return;
       }
 

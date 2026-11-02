@@ -16,6 +16,7 @@
     </Transition>
 
     <ConnectionStatusOverlay />
+    <CookieBanner />
   </div>
 </template>
 

@@ -13,57 +13,64 @@
 </template>
 
 <script setup lang="ts">
-import { siteInfo } from '~/data/site';
+import { faqs, services, siteInfo } from '~/data/site';
 
-definePageMeta({
-  layout: 'default',
-});
+useSiteSeo(
+  'Lix Photography | Portrait & Event Studio in Kisumu',
+  'Portraits, graduation photos, family sessions, executive headshots and event photography at Mega City Mall, Ground Floor, Kisumu. Book Lix Photography.',
+);
 
-useSeoMeta({
-  title: 'Lix Photography | Premium Photography Studio in Kisumu',
-  description:
-    'Lix Photography is a premium photography studio in Kisumu offering professional photography in Kisumu, portrait photography Kisumu, event photography Kisumu, and a photo studio at Mega City Mall.',
-  ogTitle: 'Lix Photography | Premium Photography Studio in Kisumu',
-  ogDescription:
-    'Timeless portraits, elegant event coverage, and refined retouching from Lix Photography at Mega City Mall, Ground Floor, Kisumu.',
-  ogType: 'website',
-  twitterCard: 'summary_large_image',
-  twitterTitle: 'Lix Photography | Premium Photography Studio in Kisumu',
-  twitterDescription:
-    'Professional photography in Kisumu with a premium black-and-gold studio presentation.',
-});
-
+const businessId = `${siteInfo.url}/#business`;
 useHead({
-  meta: [{
-    name: 'keywords',
-    content: 'photography studio in Kisumu, professional photography in Kisumu, photo studio at Mega City Mall, portrait photography Kisumu, event photography Kisumu',
+  script: [{
+    key: 'lix-structured-data',
+    type: 'application/ld+json',
+    innerHTML: JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'LocalBusiness', '@id': businessId,
+          name: siteInfo.name, url: `${siteInfo.url}/`,
+          description: siteInfo.description,
+          image: `${siteInfo.url}/images/portfolio/LIX_4390.jpg.jpeg`,
+          logo: `${siteInfo.url}/images/logo/logo.jpeg`,
+          telephone: siteInfo.bookingPhone, email: siteInfo.bookingEmail,
+          hasMap: siteInfo.mapHref,
+          address: {
+            '@type': 'PostalAddress', streetAddress: 'Mega City Mall, Ground Floor',
+            addressLocality: 'Kisumu', addressCountry: 'KE',
+          },
+          openingHoursSpecification: [{
+            '@type': 'OpeningHoursSpecification',
+            dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+            opens: '09:00', closes: '18:00',
+          }],
+          geo: { '@type': 'GeoCoordinates', latitude: -0.1068103, longitude: 34.7709808 },
+          areaServed: { '@type': 'City', name: 'Kisumu' },
+          hasOfferCatalog: {
+            '@type': 'OfferCatalog', name: 'Photography services',
+            itemListElement: services.map(service => ({
+              '@type': 'Offer', itemOffered: {
+                '@type': 'Service', name: service.title, description: service.description,
+                provider: { '@id': businessId }, areaServed: 'Kisumu',
+              },
+            })),
+          },
+        },
+        {
+          '@type': 'WebSite', '@id': `${siteInfo.url}/#website`,
+          url: `${siteInfo.url}/`, name: siteInfo.name,
+          inLanguage: 'en-KE', publisher: { '@id': businessId },
+        },
+        {
+          '@type': 'FAQPage', '@id': `${siteInfo.url}/#faq`,
+          mainEntity: faqs.map(faq => ({
+            '@type': 'Question', name: faq.question,
+            acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+          })),
+        },
+      ],
+    }).replace(/</g, '\\u003c'),
   }],
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        '@context': 'https://schema.org',
-        '@type': 'LocalBusiness',
-        name: siteInfo.name,
-        description: siteInfo.description,
-        telephone: siteInfo.bookingPhone,
-        email: siteInfo.bookingEmail,
-        hasMap: siteInfo.mapHref,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: 'Mega City Mall, Ground Floor',
-          addressLocality: 'Kisumu',
-          addressCountry: 'KE',
-        },
-        openingHours: 'Mo-Su 09:00-18:00',
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: -0.1068103,
-          longitude: 34.7709808,
-        },
-        areaServed: 'Kisumu',
-      }),
-    },
-  ],
 });
 </script>

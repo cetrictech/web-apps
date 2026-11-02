@@ -6,7 +6,7 @@
           <SectionHeading
             eyebrow="FAQ"
             title="Clear answers for bookings, delivery timelines, and studio visits."
-            description="Keep this section ready for future refinement as the studio confirms final booking terms, delivery windows, and communication channels."
+            description="Find answers about our studio location, bookings, outdoor shoots, event coverage, and delivery."
           />
         </div>
       </RevealBlock>

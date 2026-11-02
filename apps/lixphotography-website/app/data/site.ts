@@ -63,6 +63,7 @@ export type FaqItem = {
 
 export const siteInfo = {
   name: 'Lix Photography',
+  url: 'https://lixphotography.com',
   tagline: 'Premium Photography in Kisumu',
   heroHeadline: 'Timeless Photography, Beautifully Crafted',
   heroSubheadline:
