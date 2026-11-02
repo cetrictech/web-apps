@@ -10,9 +10,8 @@ export function useTheme() {
     if (!import.meta.client || !allowPreferences.value) return null;
     try { return window.localStorage.getItem(storageKey); } catch { return null; }
   };
-  const theme = useState<ThemeMode>('lix-theme-mode', () => 'dark');
+  const theme = useState<ThemeMode>('lix-theme-mode', () => 'light');
   const initialized = useState<boolean>('lix-theme-initialized', () => false);
-  const listenerBound = useState<boolean>('lix-theme-listener-bound', () => false);
 
   const applyTheme = (mode: ThemeMode, persist = true) => {
     theme.value = mode;
@@ -42,7 +41,7 @@ export function useTheme() {
       return storedTheme;
     }
 
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return 'light';
   };
 
   const initializeTheme = () => {
@@ -56,26 +55,6 @@ export function useTheme() {
     applyTheme(preferredTheme, hasStoredPreference);
     initialized.value = true;
 
-    if (listenerBound.value) {
-      return;
-    }
-
-    const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    const syncWithSystem = (event: MediaQueryListEvent) => {
-      if (readStoredTheme() !== null) {
-        return;
-      }
-
-      applyTheme(event.matches ? 'dark' : 'light', false);
-    };
-
-    if (typeof mediaQuery.addEventListener === 'function') {
-      mediaQuery.addEventListener('change', syncWithSystem);
-    } else {
-      mediaQuery.addListener(syncWithSystem);
-    }
-
-    listenerBound.value = true;
   };
 
   const setTheme = (mode: ThemeMode) => {

@@ -11,8 +11,7 @@ const themeInitScript = `(() => {
       storedTheme = window.localStorage.getItem('${themeStorageKey}');
     }
   } catch {}
-  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-  const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : systemTheme;
+  const theme = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'light';
 
   root.classList.remove('light', 'dark');
   root.classList.add(theme);
@@ -30,12 +29,12 @@ export default defineNuxtConfig({
     head: {
       htmlAttrs: {
         lang: 'en',
-        class: 'dark',
+        class: 'light',
       },
       meta: [
         {
           name: 'theme-color',
-          content: '#0A0A0A',
+          content: '#f8f5f0',
         },
       ],
       script: [
