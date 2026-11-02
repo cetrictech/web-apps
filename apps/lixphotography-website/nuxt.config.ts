@@ -16,7 +16,7 @@ export default defineNuxtConfig({
   workspaceDir: '../../',
   modules: ['@nuxt/ui'],
   css: ['~/assets/css/styles.css'],
-  devServer: { host: 'localhost', port: 3000 },
+  devServer: { host: 'localhost', port: 4210 },
   ui: { fonts: false },
   compatibilityDate: '2026-03-23',
   app: {

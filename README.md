@@ -11,7 +11,7 @@ pnpm install
 pnpm dev
 ```
 
-The photography website runs at http://localhost:3000.
+The photography website runs at http://localhost:4210.
 
 ## Commands
 
@@ -43,9 +43,9 @@ Google Fonts remains an external stylesheet, as in the original app. Nuxt UI aut
 
 The deployment follows Darena's exec-runner pipeline, build containers and Compose recreation. It deploys pushes to `develop` using Drone runner labels `environment: uat` and `location: darena-vps`.
 
-The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The committed `.env` contains local defaults; `.env.production` contains the production runtime values loaded by Compose. Both use port 3000.
+The VPS checkout must be at `/opt/apps/web-apps/web-apps` (the scripts accept an `APP_ROOT` override). Install Docker with Compose and Git, grant the runner Docker access, and ensure it can write to the checkout. The committed `.env` contains local defaults; `.env.production` contains the production runtime values loaded by Compose. Both use port 4210.
 
-Application images are built and used locally on the VPS. No container registry credentials, login, or image pushes are required. Public Node base images are still downloaded when needed. The app is published on host port 3000 and listens on container port 3000.
+Application images are built and used locally on the VPS. No container registry credentials, login, or image pushes are required. Public Node base images are still downloaded when needed. The app is published on host port 4210 and listens on container port 4210.
 
 For a local container build and run:
 

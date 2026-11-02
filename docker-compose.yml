@@ -3,8 +3,8 @@ services:
     build:
       context: .
       dockerfile: apps/lixphotography-website/Dockerfile
-    ports: ["3000:3000"]
+    ports: ["4210:4210"]
     env_file: [.env.production]
     environment:
       NITRO_HOST: 0.0.0.0
-      NITRO_PORT: 3000
+      NITRO_PORT: 4210
