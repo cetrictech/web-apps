@@ -161,7 +161,7 @@ h1 em, h2 em { color: var(--primary); font-weight: 500; }
 .site-header { position: sticky; top: 0; z-index: 60; background: var(--background); border-bottom: 1px solid var(--border); }
 .nav-inner { height: 94px; display: flex; align-items: center; justify-content: space-between; gap: 30px; }
 .brand-logo-link { display: inline-flex; flex-shrink: 0; align-items: center; }
-.brand-logo { display: block; width: 72px; height: 72px; object-fit: contain; }
+.brand-logo { display: block; width: 72px; height: 72px; object-fit: contain; border-radius: 50%; border: 1px solid var(--primary); }
 .desktop-nav { display: flex; gap: 34px; font-size: 11px; }
 .desktop-nav a:hover { color: var(--primary); }
 .nav-actions { display: flex; align-items: center; gap: 22px; }
