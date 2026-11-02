@@ -1,12 +1,9 @@
 <template>
   <div class="pb-4">
     <HeroSection />
-    <StatsSection />
-    <AboutSection />
-    <TeamSection />
-    <ServicesSection />
     <PortfolioGrid />
-    <TestimonialsSection />
+    <AboutSection />
+    <ServicesSection />
     <FaqSection />
     <ContactSection />
   </div>

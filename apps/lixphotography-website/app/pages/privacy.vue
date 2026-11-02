@@ -23,8 +23,8 @@
       </section>
       <section>
         <h2 class="text-xl font-semibold text-foreground">Contact and booking information</h2>
-        <p>The on-page inquiry form currently keeps entries in the page and does not send them to a server.
-          To confirm a booking, contact the studio directly. Information you choose to send by phone, email,
+        <p>The inquiry form prepares a WhatsApp message using the details you enter. It does not store your entries on our server.
+          When you continue, WhatsApp opens so you can review and send the message. Information you choose to send by phone, email,
           or WhatsApp is received through that channel. For privacy questions, email
           <a :href="`mailto:${siteInfo.bookingEmail}`" class="underline">{{ siteInfo.bookingEmail }}</a>.</p>
       </section>
